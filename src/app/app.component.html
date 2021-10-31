@@ -8,16 +8,21 @@
 <mat-card>
 	<mat-card-title>Add new announcement</mat-card-title>
 	<mat-card-content>
-		<mat-form-field appearance="fill">
-			<mat-label>Title</mat-label>
-			<input matInput />
-		</mat-form-field>
-		<mat-form-field appearance="fill">
-			<mat-label>Textarea</mat-label>
-			<textarea matInput></textarea>
-		</mat-form-field>
-		<button mat-raised-button color="primary">Add</button>
+		<form [formGroup]="form" (ngSubmit)="addAnnouncement()">
+			<mat-form-field appearance="fill">
+				<mat-label>Title</mat-label>
+				<input matInput formControlName="title" />
+			</mat-form-field>
+			<mat-form-field appearance="fill">
+				<mat-label>Textarea</mat-label>
+				<textarea matInput formControlName="content"></textarea>
+			</mat-form-field>
+			<button mat-raised-button color="primary">Add</button>
+		</form>
 	</mat-card-content>
 </mat-card>
 
-<app-announcement></app-announcement>
+<app-announcement
+	*ngFor="let announcement of announcements"
+	[announcement]="announcement"
+></app-announcement>
