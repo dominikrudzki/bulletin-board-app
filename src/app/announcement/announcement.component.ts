@@ -1,14 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Announcement } from '../interfaces/Annouccement-interface';
 
 @Component({
 	selector: 'app-announcement',
 	templateUrl: './announcement.component.html',
 	styleUrls: ['./announcement.component.scss'],
 })
-export class AnnouncementComponent implements OnInit {
+export class AnnouncementComponent {
 	announcements = [{ title: 'title', content: 'content' }];
-
-	constructor() {}
-
-	ngOnInit(): void {}
+	@Input() announcement!: Announcement;
 }
